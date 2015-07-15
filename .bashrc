@@ -1,6 +1,6 @@
 # Proxy Settings 
-export http_proxy=http://proxy.iiit.ac.in:8080
-export https_proxy=http://proxy.iiit.ac.in:8080
+#export http_proxy=http://proxy.iiit.ac.in:8080
+#export https_proxy=http://proxy.iiit.ac.in:8080
 
 function unset_all_proxies()
 {
@@ -30,10 +30,6 @@ function set_proxy()
     export https_proxy=http://proxy.iiit.ac.in:8080    
 }
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
 # most used command
 #alias mostused="""history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
 
@@ -42,12 +38,21 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 #"man pages path settings"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
+#"path specifications for gnu-sed"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+#"man pages path settings"
+MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+
+#settings for bash-completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
 #"color my shell : "
 #PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 export PS1="\[\e[0;32m\]\h\[\e[0m\] @ \[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\] "
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-alias ls='ls -l --color=auto'
+alias ls="ls -l --color=auto"
 
 #for folding sections
 set modelines=1
